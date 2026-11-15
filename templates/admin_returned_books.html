@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returned Books - My Library</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f5fa;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #172554;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-top: 8px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            min-width: 850px;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #16a34a;
+            color: white;
+        }
+
+        .status {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .empty {
+            text-align: center;
+            color: #777;
+            padding: 25px;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            background: #2563eb;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 7px;
+            text-decoration: none;
+        }
+
+        .back:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📗 Returned Books</h1>
+
+    <p class="subtitle">
+        View all books returned by students.
+    </p>
+
+    <div class="card">
+
+        <h2>Returned Books Records</h2>
+
+        {% if returned_books %}
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Borrowed Date</th>
+                    <th>Return Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for book in returned_books %}
+                <tr>
+                    <td>{{ book[0] }}</td>
+                    <td>{{ book[1] }}</td>
+                    <td>{{ book[2] }}</td>
+                    <td>{{ book[3] }}</td>
+                    <td>{{ book[4] }}</td>
+                    <td>
+                        {% if book[6] %}
+                            {{ book[6] }}
+                        {% else %}
+                            Not recorded
+                        {% endif %}
+                    </td>
+                    <td class="status">{{ book[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+
+        <p class="empty">
+            No returned books available.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <a href="{{ url_for('admin') }}" class="back">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

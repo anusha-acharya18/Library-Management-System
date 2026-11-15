@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Learning Hub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f3ff;
+            color: #292044;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(120deg, #5b21b6, #9333ea);
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        header h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1050px;
+            margin: 25px auto;
+        }
+
+        .hero, .section {
+            background: white;
+            padding: 25px;
+            margin-bottom: 22px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(50,30,90,0.08);
+        }
+
+        .hero {
+            text-align: center;
+            border-top: 6px solid #9333ea;
+        }
+
+        .book-icon {
+            font-size: 65px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #6d28d9;
+            margin-bottom: 14px;
+        }
+
+        h3 {
+            color: #7c3aed;
+            margin: 18px 0 8px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 23px;
+        }
+
+        li {
+            margin-bottom: 7px;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .info div {
+            background: #f3e8ff;
+            padding: 13px;
+            border-radius: 10px;
+        }
+
+        .question {
+            background: #faf5ff;
+            border-left: 4px solid #9333ea;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 14px 0;
+        }
+
+        .question strong {
+            color: #5b21b6;
+        }
+
+        pre {
+            background: #211b35;
+            color: #e9d5ff;
+            padding: 18px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .tip {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .buttons a, .buttons button {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 13px;
+            border-radius: 9px;
+            border: none;
+            text-decoration: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .back {
+            background: #ede9fe;
+            color: #6d28d9;
+        }
+
+        .borrow {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .back:hover {
+            background: #ddd6fe;
+        }
+
+        .borrow:hover {
+            background: #5b21b6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 22px;
+            color: #6b5b85;
+        }
+
+        @media(max-width: 600px) {
+            header h1 {
+                font-size: 23px;
+            }
+
+            .hero, .section {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 Programming Learning & Interview Hub</h1>
+    <p>Learn concepts, understand coding and prepare for technical interviews!</p>
+</header>
+
+<div class="container">
+
+    <div class="hero">
+        <div class="book-icon">
+            {% if "Java" in book[1] %}
+                ☕
+            {% elif "C Programming" in book[1] %}
+                💻
+            {% else %}
+                🐍
+            {% endif %}
+        </div>
+
+        <h2>{{ book[1] }}</h2>
+        <p>Learn programming step by step and prepare for your future career.</p>
+
+        <div class="info">
+            <div><strong>Author:</strong><br>{{ book[2] }}</div>
+            <div><strong>Category:</strong><br>{{ book[4] }}</div>
+            <div><strong>ISBN:</strong><br>{{ book[3] }}</div>
+            <div><strong>Available Copies:</strong><br>{{ book[5] }}</div>
+        </div>
+    </div>
+
+
+    {% if "Java" in book[1] %}
+
+    <div class="section">
+        <h2>☕ 1. Introduction to Java</h2>
+
+        <p>Java is a high-level, object-oriented programming language. It is designed to be readable, reliable and suitable for developing different types of applications.</p>
+
+        <h3>🎯 Main Purpose of Java</h3>
+        <ul>
+            <li>To develop applications that can run on different operating systems.</li>
+            <li>To build secure and reliable software.</li>
+            <li>To develop web, desktop and mobile applications.</li>
+            <li>To support object-oriented programming and code reuse.</li>
+        </ul>
+
+        <h3>🌍 Where is Java Used?</h3>
+        <ul>
+            <li>Banking and financial applications.</li>
+            <li>Enterprise and business software.</li>
+            <li>Android application development.</li>
+            <li>Web-based applications and backend systems.</li>
+            <li>Large-scale server applications.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📖 2. Important Java Concepts</h2>
+
+        <h3>1. Variables and Data Types</h3>
+        <p>Variables store information. Data types define what kind of information can be stored.</p>
+
+        <pre>int age = 20;
+double price = 99.50;
+String name = "Student";
+boolean isStudent = true;</pre>
+
+        <h3>2. Object-Oriented Programming</h3>
+        <p>Java uses objects and classes to organise programs.</p>
+
+        <ul>
+            <li><b>Class:</b> A blueprint used to create objects.</li>
+            <li><b>Object:</b> An instance of a class.</li>
+            <li><b>Inheritance:</b> One class can acquire properties of another class.</li>
+            <li><b>Polymorphism:</b> One interface or method can have different forms of behaviour.</li>
+            <li><b>Encapsulation:</b> Combining data and methods while controlling access.</li>
+            <li><b>Abstraction:</b> Hiding implementation details and showing essential features.</li>
+        </ul>
+
+        <h3>3. Conditional Statements</h3>
+        <p>Used to make decisions in a program.</p>
+
+        <pre>int marks = 75;
+
+if (marks >= 40) {
+    System.out.println("Pass");
+} else {
+    System.out.println("Fail");
+}</pre>
+
+        <h3>4. Loops</h3>
+        <p>Loops repeat a block of code until a condition is met.</p>
+
+        <h3>5. Arrays</h3>
+        <p>Arrays store multiple values of the same data type.</p>
+
+        <h3>6. Exception Handling</h3>
+        <p>It helps handle runtime errors using try, catch and finally.</p>
+
+        <h3>7. Collections</h3>
+        <p>Collections help store and manage groups of objects using ArrayList, HashSet and HashMap.</p>
+    </div>
+
+    <div class="section">
+        <h2>💻 3. Simple Java Program</h2>
+
+        <p>This program prints a message on the screen.</p>
+
+        <pre>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</pre>
+
+        <h3>Understanding the Program</h3>
+        <ul>
+            <li><b>class Main:</b> Defines a class named Main.</li>
+            <li><b>main():</b> The starting point of the program.</li>
+            <li><b>System.out.println():</b> Displays output.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🎤 4. Java Technical Interview Questions</h2>
+
+        <div class="question">
+            <strong>Q1. What is Java?</strong>
+            <p>Java is a high-level, object-oriented programming language used to develop different types of applications.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q2. Why is Java platform independent?</strong>
+            <p>Java source code is compiled into bytecode. The bytecode can run on systems that have a compatible Java Virtual Machine (JVM).</p>
+        </div>
+
+        <div class="question">
+            <strong>Q3. What is JVM?</strong>
+            <p>JVM stands for Java Virtual Machine. It executes Java bytecode.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q4. What is the difference between JDK, JRE and JVM?</strong>
+            <p><b>JDK:</b> Provides tools to develop Java programs.</p>
+            <p><b>JRE:</b> Provides the environment required to run Java programs.</p>
+            <p><b>JVM:</b> Executes Java bytecode.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q5. What is a class?</strong>
+            <p>A class is a blueprint used to create objects. It defines their data and behaviour.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q6. What is an object?</strong>
+            <p>An object is an instance of a class. It can have state and behaviour.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q7. What is inheritance?</strong>
+            <p>Inheritance allows one class to acquire properties and methods from another class.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q8. What is the difference between == and equals()?</strong>
+            <p>For objects, == compares references, while equals() can compare content when implemented appropriately.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q9. What is a constructor?</strong>
+            <p>A constructor is a special class member used to initialise an object when it is created.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q10. What is method overloading?</strong>
+            <p>Method overloading means defining multiple methods with the same name but different parameter lists.</p>
+        </div>
+    </div>
+    <div class="section">
+        <h2>🧠 5. Java Coding Interview Practice</h2>
+
+        <h3>Question 1: Check whether a number is even or odd.</h3>
+        <pre>public class Main {
+    public static void main(String[] args) {
+        int number = 10;
+
+        if (number % 2 == 0) {
+            System.out.println("Even");
+        } else {
+            System.out.println("Odd");
+        }
+    }
+}</pre>
+        <p><b>Expected Output:</b> Even</p>
+
+        <h3>Question 2: What is the output?</h3>
+        <pre>int a = 5;
+int b = 3;
+System.out.println(a + b);</pre>
+        <p><b>Answer:</b> 8</p>
+
+        <div class="tip">
+            💡 Interview Tip: Prepare OOP concepts, strings, arrays, exception handling, collections and basic coding problems.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚀 6. How Java Helps in Your Career</h2>
+        <ul>
+            <li>Builds a strong understanding of object-oriented programming.</li>
+            <li>Helps prepare for software developer interviews.</li>
+            <li>Provides knowledge useful in backend development.</li>
+            <li>Improves problem-solving and coding skills.</li>
+            <li>Can be useful for enterprise software development roles.</li>
+        </ul>
+    </div>
+
+
+    {% elif "C Programming" in book[1] %}
+
+    <div class="section">
+        <h2>💻 1. Introduction to C Programming</h2>
+
+        <p>C is a general-purpose, procedural programming language. It is known for its efficiency and close interaction with computer memory.</p>
+
+        <h3>🎯 Main Purpose of C</h3>
+        <ul>
+            <li>To develop efficient and fast programs.</li>
+            <li>To understand how computers execute instructions.</li>
+            <li>To work with memory and data structures.</li>
+            <li>To develop system-level software.</li>
+        </ul>
+
+        <h3>🌍 Where is C Used?</h3>
+        <ul>
+            <li>Operating systems and system software.</li>
+            <li>Embedded systems and microcontrollers.</li>
+            <li>Device drivers.</li>
+            <li>Compilers and programming tools.</li>
+            <li>Performance-focused applications.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📖 2. Important C Concepts</h2>
+
+        <h3>1. Variables and Data Types</h3>
+        <p>Variables store values, and data types specify the kind of value.</p>
+
+        <pre>int age = 20;
+float marks = 85.5;
+char grade = 'A';</pre>
+
+        <h3>2. Operators</h3>
+        <p>Operators perform arithmetic, comparison and logical operations.</p>
+
+        <h3>3. Conditional Statements</h3>
+        <p>if, else and switch help a program make decisions.</p>
+
+        <h3>4. Loops</h3>
+        <p>for, while and do-while repeat instructions.</p>
+
+        <h3>5. Arrays</h3>
+        <p>Arrays store multiple values of the same data type.</p>
+
+        <h3>6. Functions</h3>
+        <p>Functions divide a program into smaller reusable blocks.</p>
+
+        <h3>7. Pointers</h3>
+        <p>Pointers store memory addresses and help work with memory directly.</p>
+
+        <h3>8. Structures</h3>
+        <p>Structures group different types of data under one name.</p>
+
+        <h3>9. File Handling</h3>
+        <p>File handling allows programs to read and write information in files.</p>
+    </div>
+
+    <div class="section">
+        <h2>💻 3. Simple C Program</h2>
+
+        <pre>#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}</pre>
+
+        <h3>Understanding the Program</h3>
+        <ul>
+            <li><b>#include &lt;stdio.h&gt;:</b> Includes standard input/output functions.</li>
+            <li><b>main():</b> Starting point of the program.</li>
+            <li><b>printf():</b> Displays output.</li>
+            <li><b>return 0:</b> Indicates successful program completion.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🎤 4. C Technical Interview Questions</h2>
+
+        <div class="question">
+            <strong>Q1. What is C programming?</strong>
+            <p>C is a general-purpose, procedural programming language used for system software and application development.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q2. Who developed C?</strong>
+            <p>C was developed by Dennis Ritchie at Bell Labs in the early 1970s.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q3. What is a compiler?</strong>
+            <p>A compiler translates source code into machine code or another lower-level form that can be executed.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q4. What is a pointer?</strong>
+            <p>A pointer is a variable that stores the memory address of another variable.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q5. What is an array?</strong>
+            <p>An array stores multiple elements of the same data type in consecutive memory locations.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q6. What is the difference between while and do-while?</strong>
+            <p>A while loop checks its condition before execution. A do-while loop executes its body at least once before checking the condition.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q7. What is a function?</strong>
+            <p>A function is a reusable block of code designed to perform a particular task.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q8. What is recursion?</strong>
+            <p>Recursion occurs when a function calls itself to solve a smaller version of a problem.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q9. What is the difference between structure and union?</strong>
+            <p>In a structure, each member has its own storage. In a union, members share the same memory space.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q10. What is a NULL pointer?</strong>
+            <p>A NULL pointer is a pointer that does not point to a valid object or memory location.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧠 5. C Coding Interview Practice</h2>
+
+        <h3>Question 1: Check whether a number is even or odd.</h3>
+
+        <pre>#include &lt;stdio.h&gt;
+
+int main() {
+    int number = 10;
+
+    if (number % 2 == 0) {
+        printf("Even");
+    } else {
+        printf("Odd");
+    }
+
+    return 0;
+}</pre>
+
+        <p><b>Expected Output:</b> Even</p>
+
+        <h3>Question 2: What is the output?</h3>
+
+        <pre>int a = 10;
+int b = 20;
+printf("%d", a + b);</pre>
+
+        <p><b>Answer:</b> 30</p>
+
+        <div class="tip">
+            💡 Interview Tip: Focus on pointers, arrays, strings, functions, memory concepts, loops and output-based questions.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚀 6. How C Helps in Your Career</h2>
+        <ul>
+            <li>Develops strong programming fundamentals.</li>
+            <li>Improves understanding of memory and computer systems.</li>
+            <li>Helps with data structures and algorithms.</li>
+            <li>Useful for embedded and systems programming roles.</li>
+            <li>Builds a foundation for learning other languages.</li>
+        </ul>
+    </div>
+
+
+    {% else %}
+
+    <div class="section">
+        <h2>🐍 1. Introduction to Python</h2>
+
+        <p>Python is a high-level, interpreted, general-purpose programming language. Its simple and readable syntax makes it popular among beginners and professionals.</p>
+
+        <h3>🎯 Main Purpose of Python</h3>
+        <ul>
+            <li>To write programs using simple and readable code.</li>
+            <li>To automate repetitive tasks.</li>
+            <li>To develop websites and applications.</li>
+            <li>To work with data, artificial intelligence and machine learning.</li>
+        </ul>
+
+        <h3>🌍 Where is Python Used?</h3>
+        <ul>
+            <li>Artificial Intelligence and Machine Learning.</li>
+            <li>Data Science and Data Analysis.</li>
+            <li>Web development and backend systems.</li>
+            <li>Automation and scripting.</li>
+            <li>Scientific computing.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📖 2. Important Python Concepts</h2>
+
+        <h3>1. Variables and Data Types</h3>
+        <p>Variables store information. Python automatically determines the type of a variable from its value.</p>
+
+        <pre>name = "Student"
+age = 20
+marks = 85.5
+is_student = True</pre>
+
+        <h3>2. Conditional Statements</h3>
+        <p>if, elif and else are used to make decisions.</p>
+
+        <h3>3. Loops</h3>
+        <p>for and while loops repeat a set of instructions.</p>
+
+        <h3>4. Lists and Tuples</h3>
+        <p>Lists store changeable collections of values, while tuples store collections that cannot be changed after creation.</p>
+
+        <h3>5. Dictionaries and Sets</h3>
+        <p>Dictionaries store key-value pairs. Sets store unique elements.</p>
+
+        <h3>6. Functions</h3>
+        <p>Functions are reusable blocks of code created using the def keyword.</p>
+
+        <h3>7. Object-Oriented Programming</h3>
+        <p>Python supports classes, objects, inheritance, encapsulation and polymorphism.</p>
+
+        <h3>8. Exception Handling</h3>
+        <p>try and except help manage errors during program execution.</p>
+
+        <h3>9. Modules and Libraries</h3>
+        <p>Modules and libraries provide reusable code for tasks such as data analysis, web development and machine learning.</p>
+    </div>
+
+    <div class="section">
+        <h2>💻 3. Simple Python Program</h2>
+
+        <pre>name = "Student"
+
+print("Hello,", name)
+print("Welcome to Python!")</pre>
+
+        <h3>Understanding the Program</h3>
+        <ul>
+            <li><b>name:</b> A variable that stores a value.</li>
+            <li><b>print():</b> Displays information on the screen.</li>
+            <li><b>Indentation:</b> Defines blocks of code in Python.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🎤 4. Python Technical Interview Questions</h2>
+
+        <div class="question">
+            <strong>Q1. What is Python?</strong>
+            <p>Python is a high-level, interpreted programming language known for its simple and readable syntax.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q2. Why is Python popular?</strong>
+            <p>Python is popular because it is easy to learn, has many useful libraries and supports different areas of software development.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q3. What is the difference between a list and a tuple?</strong>
+            <p>A list is mutable, which means its elements can be changed. A tuple is immutable, which means its elements cannot be changed after creation.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q4. What is a dictionary?</strong>
+            <p>A dictionary is a collection that stores data in key-value pairs.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q5. What is indentation?</strong>
+            <p>Indentation means spaces at the beginning of a line. Python uses indentation to define code blocks.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q6. What is a function?</strong>
+            <p>A function is a reusable block of code that performs a particular task.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q7. What is the difference between == and is?</strong>
+            <p>== checks whether values are equal. is checks whether two references point to the same object.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q8. What is a module?</strong>
+            <p>A module is a Python file containing reusable code, such as functions, classes and variables.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q9. What is exception handling?</strong>
+            <p>Exception handling manages runtime errors using try, except, else and finally blocks.</p>
+        </div>
+
+        <div class="question">
+            <strong>Q10. What is a lambda function?</strong>
+            <p>A lambda function is a small anonymous function created using the lambda keyword.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🧠 5. Python Coding Interview Practice</h2>
+
+        <h3>Question 1: Check whether a number is even or odd.</h3>
+
+        <pre>number = 10
+
+if number % 2 == 0:
+    print("Even")
+else:
+    print("Odd")</pre>
+
+        <p><b>Expected Output:</b> Even</p>
+
+        <h3>Question 2: What is the output?</h3>
+
+        <pre>a = 10
+b = 20
+print(a + b)</pre>
+
+        <p><b>Answer:</b> 30</p>
+
+        <div class="tip">
+            💡 Interview Tip: Prepare lists, dictionaries, strings, functions, OOP, exception handling and basic problem-solving programs.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚀 6. How Python Helps in Your Career</h2>
+        <ul>
+            <li>Useful for AI and Machine Learning projects.</li>
+            <li>Helps with data analysis and automation.</li>
+            <li>Supports backend and web development.</li>
+            <li>Improves problem-solving and coding skills.</li>
+            <li>Provides a foundation for working with popular technology libraries.</li>
+        </ul>
+    </div>
+
+    {% endif %}
+
+
+    <div class="section">
+        <h2>⭐ 7. How to Prepare for a Technical Interview</h2>
+
+        <ul>
+            <li>Understand the basic concepts instead of memorising definitions.</li>
+            <li>Practise writing programs without copying code.</li>
+            <li>Learn to explain your program line by line.</li>
+            <li>Practise output-based questions.</li>
+            <li>Understand the differences between important concepts.</li>
+            <li>Prepare examples from your college projects.</li>
+            <li>Practise explaining your approach clearly to an interviewer.</li>
+        </ul>
+
+        <div class="tip">
+            🎯 Remember: Interviewers are interested not only in whether you know the answer, but also in how you understand a problem and explain your solution.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📌 8. What Will You Gain From This Book?</h2>
+
+        <ul>
+            <li>Clear understanding of programming fundamentals.</li>
+            <li>Knowledge of important language concepts.</li>
+            <li>Practical coding experience.</li>
+            <li>Preparation for common technical interview questions.</li>
+            <li>Better confidence when explaining programming concepts.</li>
+            <li>A foundation for learning advanced programming topics.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📚 Ready to Start Learning?</h2>
+
+        <p>Borrow this book, explore the concepts, practise the programs and prepare yourself for your next technical interview!</p>
+
+        <div class="buttons">
+            <a href="{{ url_for('borrow_books') }}" class="back">
+                ← Back to Books
+            </a>
+
+            <form action="{{ url_for('borrow_book') }}" method="POST" style="flex:1; min-width:150px;">
+                <input type="hidden" name="book_id" value="{{ book[0] }}">
+                <button type="submit" class="borrow" style="width:100%;">
+                    📖 Borrow This Book
+                </button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>📚 Programming Learning Hub | Learn • Practise • Prepare • Grow</p>
+</footer>
+
+</body>
+</html>

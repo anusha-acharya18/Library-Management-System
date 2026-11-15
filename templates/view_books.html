@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Books</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+            background: #f4f2ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5b3c99;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 35px;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 25px;
+        }
+
+        .book-card {
+            background: white;
+            padding: 18px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .book-cover {
+            height: 270px;
+            width: 100%;
+            background: #eeeaff;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .python-cover {
+            width: 175px;
+            height: 245px;
+            background: linear-gradient(145deg, #142d4e, #247b91);
+            color: white;
+            padding: 20px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 5px 6px 12px rgba(0,0,0,0.25);
+            border-left: 7px solid #f2c94c;
+        }
+
+        .python-cover .python-symbol {
+            font-size: 55px;
+            text-align: center;
+        }
+
+        .python-cover h3 {
+            font-size: 25px;
+            line-height: 1.2;
+            margin: 0;
+            text-align: center;
+        }
+
+        .python-cover p {
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .book-card h2 {
+            color: #5b3c99;
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .book-card p {
+            color: #555;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+
+        .category {
+            display: inline-block;
+            background: #eee7ff;
+            color: #6545a5;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 8px 0;
+        }
+
+        .back-link {
+            display: block;
+            width: fit-content;
+            margin: 35px auto 10px;
+            padding: 12px 22px;
+            background: #6545a5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back-link:hover {
+            background: #4d3285;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📚 Library Books</h1>
+    <p class="subtitle">Manage and explore your library collection</p>
+
+    <div class="book-grid">
+
+        {% for book in books %}
+
+        {% set title = book[1]|lower %}
+
+        <div class="book-card">
+
+            <div class="book-cover">
+
+                {% if 'java' in title %}
+
+                    <img
+                        src="https://books.google.com/books/content?id=eH56zgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                        alt="Java: A Beginner's Guide by Herbert Schildt"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <div class="python-cover" style="display:none;">
+                        <h3>JAVA PROGRAMMING</h3>
+                        <p>Herbert Schildt</p>
+                    </div>
+
+                {% elif 'c programming' in title or 'introduction to c' in title %}
+
+                    <img
+                        src="https://books.google.com/books/content?id=rN-gDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                        alt="Programming in ANSI C by E. Balagurusamy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
+                    <div class="python-cover" style="display:none;">
+                        <h3>INTRODUCTION TO C PROGRAMMING</h3>
+                        <p>E. Balagurusamy</p>
+                    </div>
+
+                {% elif 'python' in title %}
+
+                    <div class="python-cover">
+                        <div class="python-symbol">🐍</div>
+                        <h3>PYTHON BASICS</h3>
+                        <p>John Smith</p>
+                    </div>
+
+                {% else %}
+
+                    <div style="font-size:55px;">📖</div>
+
+                {% endif %}
+
+            </div>
+
+            <h2>{{ book[1] }}</h2>
+
+            {% if 'java' in title %}
+                <p><strong>Author:</strong> Herbert Schildt</p>
+            {% elif 'c programming' in title or 'introduction to c' in title %}
+                <p><strong>Author:</strong> E. Balagurusamy</p>
+            {% elif 'python' in title %}
+                <p><strong>Author:</strong> John Smith</p>
+            {% else %}
+                <p><strong>Author:</strong> {{ book[2] }}</p>
+            {% endif %}
+
+            <span class="category">{{ book[4] }}</span>
+
+            <p><strong>Book ID:</strong> {{ book[0] }}</p>
+
+            <p><strong>ISBN:</strong> {{ book[3] }}</p>
+
+            <p><strong>Available Quantity:</strong> {{ book[5] }}</p>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <a href="{{ url_for('admin') }}" class="back-link">
+        ← Back to Admin Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

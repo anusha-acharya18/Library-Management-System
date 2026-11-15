@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Borrowed Books - My Library</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f5fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #172554;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .empty {
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .return-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 9px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .return-btn:hover {
+            background: #b91c1c;
+        }
+
+        .returned {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>My Borrowed Books</h2>
+
+    {% if borrowed_books %}
+
+    <table>
+        <tr>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Borrowed Date</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        {% for book in borrowed_books %}
+        <tr>
+            <td>{{ book[1] }}</td>
+            <td>{{ book[2] }}</td>
+            <td>{{ book[3] }}</td>
+
+            <td>
+                {% if book[4] == 'Borrowed' %}
+                    Borrowed
+                {% else %}
+                    <span class="returned">Returned</span>
+                {% endif %}
+            </td>
+
+            <td>
+                {% if book[4] == 'Borrowed' %}
+                <form action="{{ url_for('return_book') }}" method="POST">
+                    <input type="hidden" name="borrow_id" value="{{ book[0] }}">
+                    <button type="submit" class="return-btn">
+                        Return Book
+                    </button>
+                </form>
+                {% else %}
+                    <span class="returned">Completed</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p class="empty">No borrowed books yet.</p>
+
+    {% endif %}
+
+    <a href="{{ url_for('student') }}">Back to Student Dashboard</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+library.db
+*.db
+.env
+__pycache__/
+venv/
+.venv/
+.flask_secret_key
